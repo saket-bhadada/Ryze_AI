@@ -63,6 +63,33 @@ body {
   box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
 }
 
+.nav-text {
+  font-size: 0.9rem;
+  display: inline-block;
+  transition: font-size 0.12s ease, transform 0.12s ease;
+}
+
+.nav-text:hover {
+  font-size: 1rem;
+  transform: translateY(-2px);
+}
+
+/* Trial: expand a single nav button to a page-like effect */
+.nav-text.animate-page {
+  /* marker class for the trial button */
+}
+
+.nav-text.is-animating {
+  position: relative;
+  z-index: 2000;
+  transform-origin: center center;
+  transform: scale(12);
+  transition: transform 0.7s cubic-bezier(.2,.9,.2,1), box-shadow 0.7s;
+  box-shadow: 0 30px 80px rgba(2,6,23,0.6);
+  border-radius: 8px;
+  background: var(--primary-gradient);
+  color: white !important;
+}
 /* Animations */
 @keyframes float {
   0% {
