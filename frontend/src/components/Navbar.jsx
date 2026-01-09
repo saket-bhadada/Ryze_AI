@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from 'react-router-dom'
 // import "./App.css"; // Assuming your CSS variables are here
 
 const Navbar = () => {
   // State to track if the page is open
   const [activePage, setActivePage] = useState(null);
+  const navigate = useNavigate();
 
   // Common transition settings for smoothness
   const transition = { type: "spring", stiffness: 200, damping: 25 };
@@ -44,7 +46,14 @@ const Navbar = () => {
           {/* We wrap the link in a motion component */}
           <motion.div 
              layoutId="case-studies-bg" // THIS ID MUST MATCH THE PAGE ID
-             onClick={() => setActivePage("case-studies")}
+             onClick={() => {
+               // animate then navigate to the routed page
+               setActivePage("case-studies");
+               setTimeout(() => {
+                 setActivePage(null);
+                 navigate('/case-studies');
+               }, 700);
+             }}
              style={{ cursor: "pointer", borderRadius: "8px" }}
           >
              <motion.a
@@ -57,7 +66,7 @@ const Navbar = () => {
                 display: "block"
               }}
             >
-              Case Studies
+              Features
             </motion.a>
           </motion.div>
 
@@ -69,10 +78,10 @@ const Navbar = () => {
               fontSize: "0.9rem",
             }}
           >
-            Our Story
+            Testimonials
           </a>
 
-          <a
+          {/* <a
             href="#community"
             style={{
               color: "var(--text-secondary)",
@@ -81,7 +90,7 @@ const Navbar = () => {
             }}
           >
             Community
-          </a>
+          </a> */}
 
           <button
             className="btn-primary"
