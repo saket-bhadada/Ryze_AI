@@ -1,10 +1,9 @@
 import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-export default function PricingCard({ plan }) {
+
+export default function PricingCard({ plan, index }) {
   const [glare, setGlare] = useState({ x: 50, y: 20, opacity: 0 });
   const ref = useRef(null);
-  const navigate = useNavigate();
 
   const handleMove = (e) => {
     const rect = ref.current.getBoundingClientRect();
@@ -19,6 +18,7 @@ export default function PricingCard({ plan }) {
     <div
       className={`pricing-card ${plan.highlight ? 'highlight' : ''}`}
       ref={ref}
+      style={{ animationDelay: `${index * 0.2}s` }}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
     >
@@ -35,8 +35,9 @@ export default function PricingCard({ plan }) {
             <li key={i}>{f}</li>
           ))}
         </ul>
-        <button className="btn-primary" onClick={() => navigate('/pricing')}>Get Started</button>
+        <button className="btn-primary">Get Started</button>
       </div>
     </div>
   );
 }
+

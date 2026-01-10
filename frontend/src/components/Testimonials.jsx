@@ -26,7 +26,7 @@ const Testimonials = () => {
     ];
 
     return (
-        <section style={{ padding: '8rem 0' }}>
+        <section id="testimonials" style={{ padding: '8rem 0' }}>
             <div className="container">
                 <h2 style={{ fontSize: '3rem', textAlign: 'center', marginBottom: '4rem' }}>
                     Wall of <span className="text-gradient">Love</span>

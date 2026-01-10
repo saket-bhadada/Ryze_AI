@@ -8,6 +8,7 @@ import PerformanceReport from './components/PerformanceReport';
 import Footer from './components/Footer';
 import CaseStudies from './pages/CaseStudies';
 import Pricing from './pages/Pricing';
+import TestimonialsPage from './pages/Testimonials';
 import LightPillar from './components/LightPillar';
 
 function Home() {
@@ -44,6 +45,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/testimonials" element={<TestimonialsPage />} />
         </Routes>
       </div>
     </>

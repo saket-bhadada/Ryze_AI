@@ -2,11 +2,11 @@ import React from 'react';
 
 const Features = () => {
     return (
-        <section style={{ padding: '8rem 0', position: 'relative' }}>
+        <section id="autonomous-ai-marketer" style={{ padding: '8rem 0', position: 'relative' }}>
             <div className="container">
                 <div style={{ 
                     display: 'grid', 
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', 
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
                     gap: '4rem' 
                 }}>
                     <div className="glass-panel" style={{ padding: '3rem' }}>

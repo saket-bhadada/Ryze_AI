@@ -25,16 +25,21 @@ const LiquidHolo = ({
     if (!containerRef.current) return;
 
     const container = containerRef.current;
-    const width = container.clientWidth || window.innerWidth;
-    const height = container.clientHeight || window.innerHeight;
+    // Helper to get dimensions
+    const getDims = () => {
+      const w = container.clientWidth || window.innerWidth;
+      const h = container.clientHeight || window.innerHeight;
+      return { w, h };
+    };
+    const { w: initialW, h: initialH } = getDims();
 
     const scene = new THREE.Scene();
     sceneRef.current = scene;
-    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+    const camera = new THREE.PerspectiveCamera(45, initialW / initialH, 0.1, 100);
     camera.position.z = 2.5;
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setSize(width, height);
+    renderer.setSize(initialW, initialH);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.domElement.className = 'liquid-holo-canvas';
     container.appendChild(renderer.domElement);
@@ -163,11 +168,10 @@ const LiquidHolo = ({
     rafRef.current = requestAnimationFrame(animate);
 
     const handleResize = () => {
-      const newW = container.clientWidth || window.innerWidth;
-      const newH = container.clientHeight || window.innerHeight;
-      camera.aspect = newW / newH;
+      const { w, h } = getDims();
+      camera.aspect = w / h;
       camera.updateProjectionMatrix();
-      renderer.setSize(newW, newH);
+      renderer.setSize(w, h);
     };
 
     const handleMouseMove = (e) => {
