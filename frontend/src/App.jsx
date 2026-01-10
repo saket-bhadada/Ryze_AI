@@ -7,6 +7,7 @@ import Testimonials from './components/Testimonials';
 import PerformanceReport from './components/PerformanceReport';
 import Footer from './components/Footer';
 import CaseStudies from './pages/CaseStudies';
+import LightPillar from './components/LightPillar';
 
 function Home() {
   return (
@@ -23,11 +24,26 @@ function Home() {
 function App() {
   return (
     <>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/case-studies" element={<CaseStudies />} />
-      </Routes>
+      <LightPillar
+        topColor="#5227FF"
+        bottomColor="#FF9FFC"
+        intensity={1.0}
+        rotationSpeed={0.3}
+        glowAmount={0.005}
+        pillarWidth={3.0}
+        pillarHeight={0.4}
+        noiseIntensity={0.5}
+        pillarRotation={0}
+        interactive={false}
+        mixBlendMode="normal"
+      />
+      <div className="app-content">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/case-studies" element={<CaseStudies />} />
+        </Routes>
+      </div>
     </>
   );
 }
